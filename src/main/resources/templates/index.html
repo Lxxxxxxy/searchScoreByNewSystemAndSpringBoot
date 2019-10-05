@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>查询成绩</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.js}"></script>
+    <style>
+        footer {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            text-align: center;
+            background-color: #F5F5F5;
+        }
+
+        input {
+            margin-top: 20px;
+        }
+
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        .form-signin {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+
+        .form-signin .form-signin-heading,
+        .form-signin .checkbox {
+            margin-bottom: 10px;
+        }
+
+        .form-signin .checkbox {
+            font-weight: normal;
+        }
+
+        .form-signin .form-control {
+            position: relative;
+            height: auto;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .form-signin .form-control:focus {
+            z-index: 2;
+        }
+
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="form-signin">
+        <h1>请输入要查询的学号或姓名（不要选错，否则查询失败）</h1>
+        <input type="text" id="txt" class="form-control" placeholder="请输入学号或姓名....">
+        <select id="sel" class="form-control">
+            <option value="XM">姓名</option>
+            <option value="XH">学号</option>
+        </select>
+        <button style="margin-top:20px;" class="btn btn-lg btn-primary btn-block" id="loginNew">查询成绩</button>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#loginNew').click(function () {
+            var item = $('#sel').val();
+            var text = $("#txt").val();
+            var url = "/search?" + item + "=" + text;
+            window.location = url;
+    });
+});
+</script>
+<script type="text/javascript" zindex="-1" opacity="2" count="99" th:src="@{/js/border.js}"></script>
+<footer>
+    Copyright &copy; 2019 @author lxxxxxxy @time 2019年10月5日13:49:20
+</footer>
+</body>
+</html>

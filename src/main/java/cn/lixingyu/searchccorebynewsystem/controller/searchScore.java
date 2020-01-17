@@ -115,6 +115,9 @@ public class searchScore {
 //        --------------------登录成功--------------------------------
 //        System.out.println(u);
 //        send1(httpClient, "http://authserver.cqwu.edu.cn/authserver/login?service=http%3A%2F%2Fehall.cqwu.edu.cn%2Fpublicapp%2Fsys%2Fcjcx%2Fmodules%2Fcjcx%2FV_IT_KSCJ_CJB_QUERY.do%3FXH%3D201758274039");
+        if (!u.startsWith("http")) {
+            u = "http://authserver.cqwu.edu.cn" + u;
+        }
         send1(httpClient, u);
 //        send1(httpClient, u);
         String score = "";
@@ -123,11 +126,12 @@ public class searchScore {
         } else if (id != null) {
             score = send2(httpClient, "http://ehall.cqwu.edu.cn/publicapp/sys/cjcx/modules/cjcx/V_IT_KSCJ_CJB_QUERY.do?XH=" + id);
         }
-        score = score.substring(score.indexOf('['),score.indexOf(']')+1);
-        List<Student> list = new Gson().fromJson(score,new TypeToken<ArrayList<Student>>(){}.getType());
+        score = score.substring(score.indexOf('['), score.indexOf(']') + 1);
+        List<Student> list = new Gson().fromJson(score, new TypeToken<ArrayList<Student>>() {
+        }.getType());
         model.addAttribute("score", list);
         httpClient.getConnectionManager().closeExpiredConnections();
-        sb=new StringBuilder();
+        sb = new StringBuilder();
         cookieStore.clear();
         return "result";
     }

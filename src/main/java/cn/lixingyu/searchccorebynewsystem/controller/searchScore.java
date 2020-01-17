@@ -52,7 +52,7 @@ public class searchScore {
         String id = request.getParameter("XH");
 
         CloseableHttpClient httpClient = HttpClients.createDefault(); // 创建httpClient实例
-        HttpPost HttpPost = new HttpPost("http://authserver.cqwu.edu.cn/authserver/login?service=http%3A%2F%2Fehall.cqwu.edu.cn%2Fpublicapp%2Fsys%2Fcjcx%2Fmodules%2Fcjcx%2FV_IT_KSCJ_CJB_QUERY.do"); // 创建httpget实例
+        HttpPost HttpPost = new HttpPost("http://authserver.cqwu.edu.cn/authserver/login?service=http://ehall.cqwu.edu.cn/publicapp/sys/cjcx/modules/cjcx/V_IT_KSCJ_CJB_QUERY.do"); // 创建httpget实例
         HttpPost.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:50.0) Gecko/20100101 Firefox/50.0"); // 设置请求头消息User-Agent
 
         httpClient = HttpClients.custom().setDefaultCookieStore(cookieStore).build();
